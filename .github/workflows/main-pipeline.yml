@@ -10,6 +10,13 @@ on:
 jobs:
   build:
     name: Build
+    #test insert
+    permissions:
+      contents: read
+      issues: read
+      checks: write
+      pull-requests: write
+    #end test insert
     uses: ./.github/workflows/build.yml
     secrets: inherit #https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idsecretsinherit
 
