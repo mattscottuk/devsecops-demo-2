@@ -39,6 +39,8 @@ jobs:
     #test insert
     permissions:
       contents: read
+      actions: read
+      security-events: write
       issues: read
       checks: write
       pull-requests: write
