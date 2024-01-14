@@ -24,11 +24,11 @@ jobs:
     needs: build
     name: SCA
     #test insert
-    permissions:
-      contents: read
-      issues: read
-      checks: write
-      pull-requests: write
+    #permissions:
+      #contents: read
+      #issues: read
+      #checks: write
+      #pull-requests: write
     #end test insert
     uses: ./.github/workflows/sca.yml
     secrets: inherit
@@ -38,12 +38,9 @@ jobs:
     name: SAST
     #test insert
     permissions:
-      contents: read
       actions: read
+      contents: read
       security-events: write
-      issues: read
-      checks: write
-      pull-requests: write
     #end test insert
     uses: ./.github/workflows/sast.yml
     secrets: inherit
@@ -52,11 +49,11 @@ jobs:
     needs: build
     name: License compliance
     #test insert
-    permissions:
-      contents: read
-      issues: read
-      checks: write
-      pull-requests: write
+    #permissions:
+      #contents: read
+      #issues: read
+      #checks: write
+      #pull-requests: write
     #end test insert
     uses: ./.github/workflows/license-compliance.yml
     secrets: inherit
@@ -67,9 +64,7 @@ jobs:
     #test insert
     permissions:
       contents: read
-      issues: read
-      checks: write
-      pull-requests: write
+      packages: write
     #end test insert
     uses: ./.github/workflows/docker.yml
     secrets: inherit
@@ -78,11 +73,11 @@ jobs:
     needs: docker
     name: Build docker image
     #test insert
-    permissions:
-      contents: read
-      issues: read
-      checks: write
-      pull-requests: write
+    #permissions:
+      #contents: read
+      #issues: read
+      #checks: write
+      #pull-requests: write
     #end test insert
     uses: ./.github/workflows/container-image-scan.yml
     secrets: inherit
@@ -93,14 +88,13 @@ jobs:
     needs: [build,docker]
     name: DAST Scan
     #test insert
-    permissions:
-      contents: read
-      issues: read
-      checks: write
-      pull-requests: write
+    #permissions:
+      #contents: read
+      #issues: read
+      #checks: write
+      #pull-requests: write
     #end test insert
     uses: ./.github/workflows/dast.yml
     secrets: inherit
     with:
       image-tag: ${{ needs.docker.outputs.image-tag }}
- 
