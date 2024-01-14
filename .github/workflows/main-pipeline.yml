@@ -23,30 +23,65 @@ jobs:
   sca:
     needs: build
     name: SCA
+    #test insert
+    permissions:
+      contents: read
+      issues: read
+      checks: write
+      pull-requests: write
+    #end test insert
     uses: ./.github/workflows/sca.yml
     secrets: inherit
 
   sast:
     needs: build
     name: SAST
+    #test insert
+    permissions:
+      contents: read
+      issues: read
+      checks: write
+      pull-requests: write
+    #end test insert
     uses: ./.github/workflows/sast.yml
     secrets: inherit
 
   license-compliance:
     needs: build
     name: License compliance
+    #test insert
+    permissions:
+      contents: read
+      issues: read
+      checks: write
+      pull-requests: write
+    #end test insert
     uses: ./.github/workflows/license-compliance.yml
     secrets: inherit
 
   docker:
     needs: build
     name: Build docker image
+    #test insert
+    permissions:
+      contents: read
+      issues: read
+      checks: write
+      pull-requests: write
+    #end test insert
     uses: ./.github/workflows/docker.yml
     secrets: inherit
 
   container-image-scan:
     needs: docker
     name: Build docker image
+    #test insert
+    permissions:
+      contents: read
+      issues: read
+      checks: write
+      pull-requests: write
+    #end test insert
     uses: ./.github/workflows/container-image-scan.yml
     secrets: inherit
     with:
@@ -55,6 +90,13 @@ jobs:
   dast:
     needs: [build,docker]
     name: DAST Scan
+    #test insert
+    permissions:
+      contents: read
+      issues: read
+      checks: write
+      pull-requests: write
+    #end test insert
     uses: ./.github/workflows/dast.yml
     secrets: inherit
     with:
