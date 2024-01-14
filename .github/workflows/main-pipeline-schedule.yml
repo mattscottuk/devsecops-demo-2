@@ -1,9 +1,9 @@
 name: 00 - Schedule Main CI / CD Pipeline
 
 on:
-  schedule:
+  #schedule:
     # * is a special character in YAML so you have to quote this string, this is always UTC -> d.h. subtract 1h for CET. run saturday
-    - cron:  '28 14 * * *'
+    #- cron:  '28 14 * * *'
   workflow_dispatch:
   
 jobs:
